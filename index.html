@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ngô Đức Anh - Portfolio (Faker Zed Intro & Barça Background)</title>
+  <title>Ngô Đức Anh - Portfolio</title>
   <style>
     :root {
       --barca-blue: #004d98;
@@ -25,7 +25,7 @@
       cursor: url('https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crc%29.svg') 16 16, url('barca-logo.png') 16 16, pointer !important;
     }
 
-    /* NỀN TOÀN BỘ TRANG PORTFOLIO LÀ ẢNH MESSI BARCA */
+    /* NỀN TOÀN BỘ TRANG PORTFOLIO */
     body {
       margin: 0;
       padding: 0;
@@ -40,7 +40,7 @@
       overflow-x: hidden;
     }
 
-    /* INTRO FAKER ZED VS RYU OVERLAY */
+    /* INTRO FAKER OVERLAY */
     #faker-intro-overlay {
       position: fixed;
       top: 0;
@@ -405,7 +405,18 @@
         <div class="card barca-messi">
           <h3>🔴🔵 Lionel Messi & FC Barcelona</h3>
           <p>Triết lý bóng đá <i>Tiki-Taka</i> quyến rũ, lối chơi kiểm soát hoàn toàn thế trận và phẩm chất thiên tài của Lionel Messi. Biểu tượng của sự khiêm tốn, sáng tạo không giới hạn và tư duy đỉnh cao trên sân cỏ - <strong>"Més que un club"</strong>.</p>
-          <div class="skills-list">
+          
+          <!-- Video Messi -->
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 1rem; border: 1px solid var(--barca-red);">
+            <iframe 
+              src="https://www.youtube.com/embed/wQZQADpna9Q" 
+              title="Leo Messi Goal vs Real Madrid 2017" 
+              allowfullscreen 
+              style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;">
+            </iframe>
+          </div>
+
+          <div class="skills-list" style="margin-top: 1rem;">
             <span class="badge">Visca el Barça</span>
             <span class="badge">Leo Messi 10</span>
             <span class="badge">Mastermind</span>
@@ -417,8 +428,8 @@
           <h3>👑 Lee "Faker" Sang-hyeok & T1</h3>
           <p>Quỷ Vương Bất Tử - Biểu tượng vĩ đại nhất lịch sử Esports. Tinh thần xuất thần trong pha xử lý Zed vs Ryu huyền thoại là nguồn cảm hứng về sự bình tĩnh, phản xạ chính xác tuyệt đối và tư duy vượt giới hạn. <strong>"All roads lead to him"</strong>.</p>
           
-          <!-- Video nhúng trực tiếp trong Portfolio -->
-          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 1rem;">
+          <!-- Video Faker -->
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 1rem; border: 1px solid var(--t1-red);">
             <iframe 
               src="https://www.youtube.com/embed/ZPCfoCVCx3U" 
               title="Faker Zed vs Ryu" 
@@ -427,7 +438,7 @@
             </iframe>
           </div>
 
-          <div class="skills-list">
+          <div class="skills-list" style="margin-top: 1rem;">
             <span class="badge t1">T1 WIN</span>
             <span class="badge t1">Faker Zed Play</span>
             <span class="badge t1">ZOFGK</span>
