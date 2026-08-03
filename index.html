@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ngô Đức Anh - Portfolio (Barca Messi & T1 Faker Edition)</title>
+  <title>Ngô Đức Anh - Portfolio (Barça Messi & T1 Faker Edition)</title>
   <style>
     :root {
       --barca-blue: #004d98;
@@ -16,12 +16,12 @@
       --card-bg: rgba(15, 23, 38, 0.85);
     }
 
-    /* Con trỏ chuột Logo Barca */
+    /* Con trỏ chuột sử dụng ảnh barca-logo.png trong thư mục */
     body, button, a {
-      cursor: url('https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crc%29.svg'), auto !important;
+      cursor: url('barca-logo.png'), auto !important;
     }
 
-    /* Hiệu ứng Nền động T1 Faker (Animated Gradient Background) */
+    /* Hiệu ứng Nền động T1 Glow */
     body {
       margin: 0;
       padding: 0;
@@ -39,6 +39,70 @@
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
+    }
+
+    /* INTRO MESSI BARCA OVERLAY */
+    #messi-intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(5, 8, 15, 0.95);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    .intro-container {
+      max-width: 800px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .intro-video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 35px rgba(165, 0, 68, 0.6);
+      border: 2px solid var(--barca-red);
+      margin-bottom: 1.5rem;
+    }
+
+    .intro-video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .btn-enter {
+      background: linear-gradient(45deg, var(--barca-blue), var(--barca-red), var(--t1-gold));
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(237, 187, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-enter:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(237, 187, 0, 0.8);
     }
 
     /* Header & Navigation */
@@ -78,7 +142,7 @@
       color: var(--t1-gold);
     }
 
-    /* Hero Section - Ảnh cá nhân & Giới thiệu */
+    /* Hero Section */
     .hero {
       max-width: 1100px;
       margin: 3rem auto;
@@ -154,7 +218,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Motto / Quote Box */
     .motto-box {
       background: var(--card-bg);
       border-left: 4px solid var(--t1-red);
@@ -164,7 +227,7 @@
       font-style: italic;
     }
 
-    /* Container chung */
+    /* Container & Layout */
     .container {
       max-width: 1100px;
       margin: 4rem auto;
@@ -186,7 +249,6 @@
       background: linear-gradient(90deg, var(--t1-red), transparent);
     }
 
-    /* Grid Layout */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -200,6 +262,8 @@
       padding: 1.5rem;
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       backdrop-filter: blur(5px);
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
@@ -214,24 +278,37 @@
       font-size: 1.3rem;
     }
 
-    /* Section Đặc Biệt: Messi Barca & T1 Faker */
-    .legend-card {
+    /* CARD T1 FAKER VỚI VIDEO NỀN ĐỘNG */
+    .t1-video-card {
       position: relative;
+      background: rgba(7, 10, 16, 0.7);
+      border: 1px solid var(--t1-red);
+    }
+
+    .t1-video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.28;
+      pointer-events: none;
       overflow: hidden;
     }
 
-    .legend-card::before {
-      content: '';
+    .t1-video-bg iframe {
+      width: 300%;
+      height: 300%;
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 4px;
+      top: -100%;
+      left: -100%;
+      object-fit: cover;
     }
 
-    .barca-messi::before {
-      background: linear-gradient(90deg, var(--barca-blue), var(--barca-red), var(--accent-gold));
-    }
-
-    .t1-faker::before {
-      background: linear-gradient(90deg, var(--t1-red), var(--t1-gold));
+    .t1-content {
+      position: relative;
+      z-index: 1;
     }
 
     .skills-list {
@@ -251,7 +328,7 @@
     }
 
     .badge.t1 {
-      background: rgba(228, 0, 43, 0.2);
+      background: rgba(228, 0, 43, 0.3);
       border-color: var(--t1-red);
     }
 
@@ -269,6 +346,24 @@
 </head>
 <body>
 
+  <!-- INTRO MESSI BARCA (MÀN HÌNH CHÀO MỪNG NỔI BẬT) -->
+  <div id="messi-intro-overlay">
+    <div class="intro-container">
+      <h2 style="color: var(--t1-gold); margin-bottom: 0.5rem;">🔴🔵 Welcome to Ngô Đức Anh Portfolio</h2>
+      <p style="color: #cbd5e1; margin-bottom: 1.5rem;">Cảm hứng nghệ thuật cống hiến từ Lionel Messi & FC Barcelona</p>
+      
+      <div class="intro-video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/m8A9_C2Ld1o?autoplay=1&mute=1&loop=1&playlist=m8A9_C2Ld1o&controls=0" 
+          title="Lionel Messi Intro" 
+          allow="autoplay; encrypted-media">
+        </iframe>
+      </div>
+
+      <button class="btn-enter" onclick="closeIntro()">Khám Phá Portfolio ➔</button>
+    </div>
+  </div>
+
   <!-- Header -->
   <header>
     <div class="logo">Ngô Đức Anh</div>
@@ -276,15 +371,15 @@
       <a href="#about">Giới thiệu</a>
       <a href="#skills">Kỹ năng</a>
       <a href="#legends">Huyền Thoại Trực Cảm</a>
+      <a href="#contact">Liên hệ</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <main>
+    <!-- Hero Section -->
     <section class="hero" id="about">
       <div class="hero-avatar">
         <div class="avatar-wrapper">
-          <!-- Ảnh áo cam cá nhân của bạn -->
           <img src="1779375987250_695058717571640622_2958001022251459719_315c67f1867e0619eed27125b77a87e4.jpg" alt="Ngô Đức Anh Avatar" class="avatar-img">
         </div>
       </div>
@@ -336,13 +431,13 @@
       </div>
     </div>
 
-    <!-- Nguồn Cảm Hứng Huyền Thoại: Messi Barça & T1 Faker -->
+    <!-- Legends Section -->
     <div class="container" id="legends">
       <h2 class="section-title">Huyền Thoại & Tinh Thần Dẫn Lối</h2>
       <div class="grid">
         
-        <!-- Intro Lionel Messi & FC Barcelona -->
-        <div class="card legend-card barca-messi">
+        <!-- Intro Lionel Messi & FC Barcelona Card -->
+        <div class="card barca-messi">
           <h3>🔴🔵 Lionel Messi & FC Barcelona</h3>
           <p>Triết lý bóng đá <i>Tiki-Taka</i> quyến rũ, lối chơi kiểm soát hoàn toàn thế trận và phẩm chất thiên tài của Lionel Messi. Biểu tượng của sự khiêm tốn, sáng tạo không giới hạn và tư duy đỉnh cao trên sân cỏ - <strong>"Més que un club"</strong>.</p>
           <div class="skills-list">
@@ -352,17 +447,50 @@
           </div>
         </div>
 
-        <!-- Intro Faker & T1 -->
-        <div class="card legend-card t1-faker">
-          <h3>👑 Lee "Faker" Sang-hyeok & T1</h3>
-          <p>Quỷ Vương Bất Tử - Biểu tượng vĩ đại nhất lịch sử Esports. Tinh thần của T1 là bài học về sự bền bỉ, kiên cường vượt qua mọi khó khăn để giữ vững ngai vàng thế giới. <strong>"All roads lead to him"</strong> - Truyền cảm hứng phấn đấu không ngừng nghỉ.</p>
-          <div class="skills-list">
-            <span class="badge t1">T1 WIN</span>
-            <span class="badge t1">Unkillable Demon King</span>
-            <span class="badge t1">ZOFGK</span>
+        <!-- T1 Faker Card VỚI ẢNH NỀN ĐỘNG VIDEO FAKER -->
+        <div class="card t1-video-card">
+          <div class="t1-video-bg">
+            <iframe 
+              src="https://www.youtube.com/embed/ChO1VJ7N43s?autoplay=1&mute=1&loop=1&playlist=ChO1VJ7N43s&controls=0&showinfo=0&autohide=1" 
+              allow="autoplay">
+            </iframe>
+          </div>
+
+          <div class="t1-content">
+            <h3>👑 Lee "Faker" Sang-hyeok & T1</h3>
+            <p>Quỷ Vương Bất Tử - Biểu tượng vĩ đại nhất lịch sử Esports. Tinh thần của T1 là bài học về sự bền bỉ, kiên cường vượt qua mọi khó khăn để giữ vững ngai vàng thế giới. <strong>"All roads lead to him"</strong> - Truyền cảm hứng phấn đấu không ngừng nghỉ.</p>
+            <div class="skills-list">
+              <span class="badge t1">T1 WIN</span>
+              <span class="badge t1">Unkillable Demon King</span>
+              <span class="badge t1">ZOFGK</span>
+            </div>
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- Connect / Contact Section -->
+    <div class="container" id="contact">
+      <h2 class="section-title">Kết Nối Với Tôi</h2>
+      <div class="grid">
+        <!-- Gmail Card -->
+        <a href="mailto:nducanh663@gmail.com" style="text-decoration: none; color: inherit;">
+          <div class="card barca-messi">
+            <h3>✉️ Email (Gmail)</h3>
+            <p style="font-size: 1.1rem; font-weight: bold; margin-top: 0.5rem; color: #fff;">nducanh663@gmail.com</p>
+            <p style="font-size: 0.85rem; color: #a0aec0; margin-bottom: 0;">Nhấp vào để gửi email trực tiếp</p>
+          </div>
+        </a>
+
+        <!-- Phone / Zalo Card -->
+        <a href="tel:0383026469" style="text-decoration: none; color: inherit;">
+          <div class="card t1-video-card" style="padding: 1.5rem;">
+            <h3>📞 Số Điện Thoại / Zalo</h3>
+            <p style="font-size: 1.1rem; font-weight: bold; margin-top: 0.5rem; color: #fff;">0383 026 469</p>
+            <p style="font-size: 0.85rem; color: #a0aec0; margin-bottom: 0;">Nhấp vào để thực hiện cuộc gọi</p>
+          </div>
+        </a>
       </div>
     </div>
   </main>
@@ -371,6 +499,15 @@
   <footer>
     <p>© 2026 Ngô Đức Anh - FTU Portfolio. Powered by Barça Messi & T1 Faker Spirits.</p>
   </footer>
+
+  <!-- Script tắt Intro Messi -->
+  <script>
+    function closeIntro() {
+      const overlay = document.getElementById('messi-intro-overlay');
+      overlay.style.opacity = '0';
+      overlay.style.visibility = 'hidden';
+    }
+  </script>
 
 </body>
 </html>
