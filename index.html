@@ -16,9 +16,13 @@
       --card-bg: rgba(15, 23, 38, 0.85);
     }
 
-    /* Con trỏ chuột sử dụng ảnh barca-logo.png trong thư mục */
-    body, button, a {
-      cursor: url('barca-logo.png'), auto !important;
+    /* Fix con trỏ chuột Logo Barça hiển thị chuẩn trên mọi khu vực */
+    *, body, button, a, input, select {
+      cursor: url('https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crc%29.svg') 16 16, url('barca-logo.png') 16 16, default !important;
+    }
+
+    a:hover, button:hover, .card:hover, .btn-enter:hover {
+      cursor: url('https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crc%29.svg') 16 16, url('barca-logo.png') 16 16, pointer !important;
     }
 
     /* Hiệu ứng Nền động T1 Glow */
@@ -93,7 +97,6 @@
       font-size: 1.1rem;
       font-weight: bold;
       border-radius: 30px;
-      cursor: pointer;
       box-shadow: 0 0 15px rgba(237, 187, 0, 0.5);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-transform: uppercase;
@@ -346,16 +349,16 @@
 </head>
 <body>
 
-  <!-- INTRO MESSI BARCA (MÀN HÌNH CHÀO MỪNG NỔI BẬT) -->
+  <!-- INTRO MESSI BARCA EDIT -->
   <div id="messi-intro-overlay">
     <div class="intro-container">
       <h2 style="color: var(--t1-gold); margin-bottom: 0.5rem;">🔴🔵 Welcome to Ngô Đức Anh Portfolio</h2>
-      <p style="color: #cbd5e1; margin-bottom: 1.5rem;">Cảm hứng nghệ thuật cống hiến từ Lionel Messi & FC Barcelona</p>
+      <p style="color: #cbd5e1; margin-bottom: 1.5rem;">Cảm hứng nghệ thuật cống hiến từ Lionel Messi & FC Barcelona Edit</p>
       
       <div class="intro-video-wrapper">
         <iframe 
-          src="https://www.youtube.com/embed/m8A9_C2Ld1o?autoplay=1&mute=1&loop=1&playlist=m8A9_C2Ld1o&controls=0" 
-          title="Lionel Messi Intro" 
+          src="https://www.youtube.com/embed/JurNV07rNv4?autoplay=1&mute=1&loop=1&playlist=JurNV07rNv4&controls=0" 
+          title="Lionel Messi FC Barcelona Edit" 
           allow="autoplay; encrypted-media">
         </iframe>
       </div>
@@ -436,7 +439,7 @@
       <h2 class="section-title">Huyền Thoại & Tinh Thần Dẫn Lối</h2>
       <div class="grid">
         
-        <!-- Intro Lionel Messi & FC Barcelona Card -->
+        <!-- Lionel Messi & FC Barcelona Card -->
         <div class="card barca-messi">
           <h3>🔴🔵 Lionel Messi & FC Barcelona</h3>
           <p>Triết lý bóng đá <i>Tiki-Taka</i> quyến rũ, lối chơi kiểm soát hoàn toàn thế trận và phẩm chất thiên tài của Lionel Messi. Biểu tượng của sự khiêm tốn, sáng tạo không giới hạn và tư duy đỉnh cao trên sân cỏ - <strong>"Més que un club"</strong>.</p>
@@ -447,7 +450,7 @@
           </div>
         </div>
 
-        <!-- T1 Faker Card VỚI ẢNH NỀN ĐỘNG VIDEO FAKER -->
+        <!-- T1 Faker Card VỚI VIDEO NỀN ĐỘNG -->
         <div class="card t1-video-card">
           <div class="t1-video-bg">
             <iframe 
